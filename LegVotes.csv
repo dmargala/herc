@@ -1,39 +1,36 @@
 "Bill Prefix"	"Bill Number"	"Bill ID"	"Vote Date"	"Vote Place"	"Motion"	"Score"
-"SB"	1456	"0SB1456"	"05/29/12"	"Senate Floor"	"Senate 3rd Reading SB1456 Lowenthal"	-4
-"SB"	1456	"0SB1456"	"06/19/12"	"Asm Higher Education"	"Do pass as amended and be re-referred to the Committee on Appropriations."	-4
-"AB"	970	"0AB970"	"01/30/12"	"Assembly Floor"	"AB 970 FONG Assembly Third Reading"	6
-"AB"	970	"0AB970"	"06/27/12"	"Sen Education"	"Do pass as amended, and re-refer to the Committee on Appropriations."	6
-"SB"	1539	"0SB1539"	"07/02/12"	"Assembly Floor"	"SB 1539 Corbett Senate Third Reading By LARA"	6
+"AB"	970	"0AB970"	"08/30/12"	"Assembly Floor"	"AB 970 FONG  Concurrence in Senate Amendments"	6
+"AB"	970	"0AB970"	"08/29/12"	"Senate Floor"	"Assembly 3rd Reading AB970 Fong By Alquist"	6
+"SB"	1539	"0SB1539"	"07/02/12"	"Assembly Floor"	"SB 1539 Corbett  Senate Third Reading  By LARA"	6
 "SB"	1539	"0SB1539"	"05/03/12"	"Senate Floor"	"Senate 3rd Reading SB1539 Corbett"	6
-"AB"	684	"0AB684"	"09/02/11"	"Assembly Floor"	"AB 684 BLOCK Concurrence - Urgency Added"	4
-"AB"	684	"0AB684"	"08/30/11"	"Senate Floor"	"Assembly 3rd Reading AB684 Block By Alquist Urgency Clause"	4
 "AB"	346	"0AB346"	"05/16/11"	"Assembly Floor"	"AB 346 ATKINS Assembly Third Reading"	6
-"AB"	346	"0AB346"	"06/21/11"	"Sen Elections and Constitutional Amendments"	"Do pass, but re-refer to the Committee on Appropriations."	6
 "AB"	620	"0AB620"	"09/06/11"	"Assembly Floor"	"AB 620 BLOCK Concurrence in Senate Amendments"	6
 "AB"	620	"0AB620"	"08/31/11"	"Senate Floor"	"Assembly 3rd Reading AB620 Block By Kehoe"	6
 "AB"	130	"0AB130"	"07/14/11"	"Senate Floor"	"Assembly 3rd Reading AB130 Cedillo By Calderon"	6
 "AB"	130	"0AB130"	"05/05/11"	"Assembly Floor"	"AB 130 CEDILLO Assembly Third Reading"	6
 "AB"	131	"0AB131"	"06/01/11"	"Assembly Floor"	"AB 131 CEDILLO Assembly Third Reading"	6
 "AB"	131	"0AB131"	"08/31/11"	"Senate Floor"	"Assembly 3rd Reading AB131 Cedillo By Calderon"	6
-"AB"	1501	"0AB1501"	"05/30/12"	"Assembly Floor"	"AB 1501 PÉREZ, J. Third Reading Urgency"	12
-"AB"	1501	"0AB1501"	"06/27/12"	"Sen Education"	"Do pass, but re-refer to the Committee on Appropriations."	12
-"AB"	2202	"0AB2202"	"05/30/12"	"Assembly Floor"	"AB 2202 BLOCK Assembly Third Reading"	2
-"AB"	2202	"0AB2202"	"06/27/12"	"Sen Education"	"Do pass as amended, and re-refer to the Committee on Appropriations."	2
-"AB"	1723	"0AB1723"	"05/29/12"	"Assembly Floor"	"AB 1723 FUENTES Assembly Third Reading"	2
-"AB"	1723	"0AB1723"	"06/20/12"	"Sen Education"	"Do pass as amended, but re-refer to the Committee on Appropriations Recommend Consent."	2
-"AB"	2442	"0AB2442"	"05/30/12"	"Assembly Floor"	"AB 2442 WILLIAMS Assembly Third Reading"	8
-"AB"	2442	"0AB2442"	"06/26/12"	"Sen Governmental Organization"	"Do pass, but re-refer to the Committee on Governance and Finance."	8
+"AB"	1501	"0AB1501"	"05/30/12"	"Assembly Floor"	"AB 1501 PÉREZ, J. Third Reading Urgency"	6
+"AB"	2202	"0AB2202"	"08/22/12"	"Assembly Floor"	"AB 2202 BLOCK  Concurrence in Senate Amendments"	2
+"AB"	2202	"0AB2202"	"08/20/12"	"Senate Floor"	"Assembly 3rd Reading AB2202 Block By Alquist"	2
+"AB"	1723	"0AB1723"	"08/27/12"	"Assembly Floor"	"AB 1723 FUENTES  Concurrence in Senate Amendments"	2
+"AB"	1723	"0AB1723"	"08/23/12"	"Senate Floor"	"Assembly 3rd Reading AB1723 Fuentes By Lieu"	2
+"AB"	2442	"0AB2442"	"08/30/12"	"Assembly Floor"	"AB 2442 WILLIAMS  Concurrence in Senate Amendments"	8
+"AB"	2442	"0AB2442"	"08/29/12"	"Senate Floor"	"Assembly 3rd Reading AB2442 Williams By Liu"	8
+"SB"	185	"0SB185"	"09/01/11"	"Senate Floor"	"Unfinished Business SB185 Hernandez Concurrence"	6
+"SB"	185	"0SB185"	"08/29/11"	"Assembly Floor"	"SB 185 Hernandez Senate Third Reading By LARA"	6
 "SB"	259	"0SB259"	"01/26/12"	"Senate Floor"	"Senate 3rd Reading SB259 Hancock"	4
-"SB"	259	"0SB259"	"06/19/12"	"Asm Higher Education"	"Do pass and be re-referred to the Committee on Appropriations."	4
-"SB"	960	"0SB960"	"05/30/12"	"Senate Floor"	"Senate 3rd Reading SB960 Rubio"	8
-"SB"	960	"0SB960"	"07/03/12"	"Asm Higher Education"	"Do pass as amended and be re-referred to the Committee on Appropriations."	8
-"SB"	1052	"0SB1052"	"05/30/12"	"Senate Floor"	"Senate 3rd Reading SB1052 Steinberg"	8
-"SB"	1052	"0SB1052"	"07/03/12"	"Asm Higher Education"	"Do pass as amended and be re-referred to the Committee on Appropriations."	8
-"SB"	1053	"0SB1053"	"05/30/12"	"Senate Floor"	"Senate 3rd Reading SB1053 Steinberg"	8
-"SB"	1053	"0SB1053"	"07/03/12"	"Asm Higher Education"	"Do pass and be re-referred to the Committee on Appropriations."	8
-"SB"	1289	"0SB1289"	"05/10/12"	"Senate Floor"	"Senate 3rd Reading SB1289 Corbett"	4
-"SB"	1289	"0SB1289"	"06/19/12"	"Asm Higher Education"	"Do pass as amended and be re-referred to the Committee on Appropriations."	4
-"SB"	1466	"0SB1466"	"05/31/12"	"Senate Floor"	"Senate 3rd Reading SB1466 De León"	8
-"SB"	1466	"0SB1466"	"07/03/12"	"Asm Higher Education"	"Do pass and be re-referred to the Committee on Appropriations."	8
+"SB"	259	"0SB259"	"08/23/12"	"Assembly Floor"	"SB 259 Hancock  Senate Third Reading  By SKINNER"	4
+"SB"	1052	"0SB1052"	"08/31/12"	"Senate Floor"	"Unfinished Business SB1052 Steinberg Concurrence"	8
+"SB"	1052	"0SB1052"	"08/27/12"	"Assembly Floor"	"SB 1052 Steinberg  Senate Third Reading  By BLOCK"	8
+"SB"	1053	"0SB1053"	"08/31/12"	"Senate Floor"	"Unfinished Business SB1053 Steinberg Concurrence"	8
+"SB"	1053	"0SB1053"	"08/27/12"	"Assembly Floor"	"SB 1053 Steinberg  Senate Third Reading  By BLOCK"	8
+"SB"	1289	"0SB1289"	"08/22/12"	"Senate Floor"	"Unfinished Business SB1289 Corbett Concurrence"	4
+"SB"	1289	"0SB1289"	"08/21/12"	"Assembly Floor"	"SB 1289 Corbett  Senate Third Reading  By WIECKOWSKI"	4
 "SB"	1356	"0SB1356"	"05/31/12"	"Senate Floor"	"Senate 3rd Reading SB1356 De León"	8
-"SB"	1356	"0SB1356"	"07/02/12"	"Asm Revenue and Taxation"	"Do pass and be re-referred to the Committee on Appropriations."	8
+"AB"	1464	"0AB1464"	"06/15/12"	"Assembly Floor"	"AB 1464 BLUMENFIELD Concurrence in Senate Amendments"	-18
+"AB"	1464	"0AB1464"	"06/15/12"	"Senate Floor"	"Assembly 3rd Reading AB1464 Blumenfield By Leno"	-18
+"AB"	1502	"0AB1502"	"06/27/12"	"Assembly Floor"	"AB 1502 BUDGET  Concurrence in Senate Amendments By BLUMENFIELD"	12
+"AB"	1502	"0AB1502"	"06/27/12"	"Senate Floor"	"Assembly 3rd Reading AB1502 Committee on BUDGET (Blumenfield) By Leno"	12
+"AB"	1500	"0AB1500"	"08/13/12"	"Assembly Floor"	"AB 1500 PÉREZ, J.  Third Reading Urgency"	4
+"AB"	1500	"0AB1500"	"09/01/12"	"Senate Floor"	"Assembly 3rd Reading AB1500 John A. Pérez By Rubio Urgency Clause"	4

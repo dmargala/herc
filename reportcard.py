@@ -1,4 +1,4 @@
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 import csv
 import os
 import re
@@ -6,8 +6,8 @@ import urllib2
 import sys
 import xlwt
 
-BUDGET_WEIGHT = 1.0/3
-LEG_WEIGHT = 1.0/3
+BUDGET_WEIGHT = 0.0
+LEG_WEIGHT = 1.0
 
 def lookup_votes(bill_id, vote_date, vote_place, vote_title):
     """Returns a list of three lists [ [aye voters], [no voters], [nvr voters]]
@@ -175,8 +175,9 @@ def write_tex(budget_dict, leg_dict, score_dict):
 
     ##Read in the members' information
     member_info = {}
-    for row in unicode_csv_reader(open("./memberinfo.csv", "rb"),
+    for row in unicode_csv_reader(open("./memberinfo.csv", "rU"),
             delimiter=",", codec='utf-8'):
+
         if row[0] == "Member":
             continue
 
@@ -215,25 +216,50 @@ def write_tex(budget_dict, leg_dict, score_dict):
 
         #Get the percent score and the member's grade
         member_percent = score_dict[member]['overall_percent_score']
-        if member_percent > .8:
+        roundmember = "%.1f" % round(member_percent*100, 3)
+        if member_percent > .965:
+            grade = "A+"
+            color = "Green"
+        elif member_percent > .935:
             grade = "A"
             color = "Green"
-        elif member_percent > .65:
+        elif member_percent > .895:
+            grade = "A-"
+            color = "Green"            
+        elif member_percent > .865:
+            grade = "B+"
+            color = "YellowGreen"
+        elif member_percent > .835:
             grade = "B"
             color = "YellowGreen"
-        elif member_percent > .5:
+        elif member_percent > .795:
+            grade = "B-"
+            color = "YellowGreen"            
+        elif member_percent > .765:
+            grade = "C+"
+            color = "YellowOrange"
+        elif member_percent > .735:
             grade = "C"
             color = "YellowOrange"
-        elif member_percent > .3:
+        elif member_percent > .695:
+            grade = "C-"
+            color = "YellowOrange"            
+        elif member_percent > .665:
+            grade = "D+"
+            color = "RedOrange"
+        elif member_percent > .635:
             grade = "D"
             color = "RedOrange"
+        elif member_percent > .595:
+            grade = "D-"
+            color = "RedOrange"            
         elif member_percent >= 0:
             grade = "F"
             color = "Red"
         else:
             grade = ""
             color = "gray"
-
+        raw_tex = raw_tex.replace("#NUMBERSCORE#", roundmember)    
         raw_tex = raw_tex.replace("#GRADE#", grade)
         raw_tex = raw_tex.replace("#GRADE_COLOR#", color)
 
@@ -255,7 +281,7 @@ def write_tex(budget_dict, leg_dict, score_dict):
         info_line = [k for k in split_tex if "#BILL_VOTE_COLOR#" in k][0]
         info_index = split_tex.index(info_line)
 
-        bills_dict = dict(budget_dict[member])
+        bills_dict = dict(budget_dict.get(member, {}))
         bills_dict.update(leg_dict[member])
 
         for bill in sorted([k for k in bills_dict if isinstance(k, tuple)],
@@ -295,7 +321,25 @@ def write_tex(budget_dict, leg_dict, score_dict):
 
         f = open("./handout/" + member.encode("ascii",
             "ignore").replace(' ', '').replace('.', '') + ".tex", "w")
-        f.write("\n".join([k.encode("utf-8") for k in split_tex]))
+        #print split_tex
+        flag = False
+        if not flag:
+            try:
+                row = [unicode(k).encode("utf-8") for k in split_tex]
+                flag = True
+            except UnicodeDecodeError:
+                pass
+        if not flag:
+            try:                
+                row = [k.encode("latin1") for k in split_tex]
+                flag = True
+            except UnicodeDecodeError:
+                pass
+        if not flag:
+            row = [repr(k) for k in split_tex]
+            print "Forcing row to output.."
+            
+        f.write("\n".join(row))
         f.close()
 
 
@@ -308,7 +352,7 @@ def unicode_csv_reader(unicode_csv_data, dialect=csv.excel,
                             dialect=dialect, **kwargs)
     for row in csv_reader:
         # decode UTF-8 back to Unicode, cell by cell:
-        yield [unicode(cell, 'utf-8') for cell in row]
+		yield [unicode(cell.strip(), 'utf-8') for cell in row]
 
 def utf_8_encoder(unicode_csv_data, codec):
     """A little generator for encoding data from the CSV files"""
@@ -418,7 +462,6 @@ def main(budget_vote_csv, leg_vote_csv):
     budget_vote_csv -- name of csv file containing budget votes
     leg_vote_csv -- name of csv file containing non-budget votes
     """
-
     budget_member_dict, budget_vote_items = \
             member_vote_histories(budget_vote_csv)
 
@@ -436,6 +479,3 @@ if __name__ == '__main__':
         main(sys.argv[1], sys.argv[2])
     else:
         print "Usage: python2 reportcard.py <budget_csv> <leg_csv>"
-
-
-

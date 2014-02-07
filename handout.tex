@@ -1,6 +1,5 @@
-\documentclass[12pt,letterpaper]{article}
+\documentclass[10pt,letterpaper]{article}
 \pagestyle{empty}
-\usepackage{draftwatermark}
 \usepackage[utf8]{inputenc}
 \usepackage{longtable}
 \usepackage{amsmath}
@@ -14,25 +13,24 @@
 \usepackage[left=.5in,right=.5in,top=.5in,bottom=.5in]{geometry}\usepackage{array}
 \usepackage[table,usenames,dvipsnames]{xcolor}
 
-\SetWatermarkScale{1.5}
 \renewcommand{\tabcolsep}{0cm}
 \renewcommand{\arraystretch}{0}
 \begin{document}
-\begin{center} \begin{huge}California Public Higher Education Report Card\end{huge} \end{center}
-\begin{tabular}{m{.25\textwidth} m{.25\textwidth} m{.5\textwidth}}
-\includegraphics[width=.25\textwidth]{#PICTURE_FILE#} &
-\cellcolor{#GRADE_COLOR#} \begin{Huge}\begin{center} \fontsize{2in}{2in}\selectfont #GRADE#  \end{center} \end{Huge} &
+\begin{center} \begin{huge}2012 California Public Higher Education Report Card\end{huge} \end{center}
+\begin{tabular}{m{.2\textwidth} m{.3\textwidth} m{.5\textwidth}}
+\includegraphics[width=.2\textwidth]{#PICTURE_FILE#} &
+\cellcolor{#GRADE_COLOR#}\begin{center}  \begin{huge}\fontsize{1.4in}{1.4in}\selectfont #GRADE# \\ \vspace{.15em}\end{huge} \begin{huge} #NUMBERSCORE# \% \end{huge} \end{center}&
 \cellcolor[gray]{0.95} \begin{minipage}{.5\textwidth} \begin{center}
-\begin{HUGE} #MEMBER_NAME#  \end{HUGE} \\ \vspace{2.5em} \begin{Large}#PARTY# representing the #ORDINAL_DISTRICT# #HOUSE# District\end{Large} \\ \vspace{1.5em} \begin{large}#CITIES# \end{large}\end{center}
+\begin{HUGE} #MEMBER_NAME#  \end{HUGE} \\ \vspace{2.5em} \begin{Large}#PARTY# representing the #ORDINAL_DISTRICT# #HOUSE# District\end{Large} \\ \vspace{1.5em}\end{center}
 \end{minipage}
 \end{tabular}
 
-%\renewcommand{\arraystretch}{1.0}
-\vspace{1em}
-\begin{longtable}{m{.18\textwidth} m{.16\textwidth} m{.14\textwidth} m{.52\textwidth}}
+\renewcommand{\arraystretch}{0}
+\vspace{0em}
+\begin{longtable}{@{\vspace{-.4em}} m{.13\textwidth} m{.13\textwidth} m{.1\textwidth} m{.62\textwidth}}
 
-\vspace{0pt} \begin{center}\begin{large}Member's Vote\end{large}\end{center} & \begin{center}\begin{large}Correct Vote\end{large}\end{center} &\vspace{0pt} \begin{large}\begin{center}\raisebox{2.2pt}{Weight}\end{center}\end{large} &\begin{large}\begin{center}\raisebox{2.2pt}{Bill Information}\end{center}\end{large} \\ \hline
-\cellcolor{#BILL_VOTE_COLOR#} \begin{center}\begin{LARGE} #MEMBER_VOTE# \end{LARGE}\end{center}& \begin{center}\begin{LARGE} #GOOD_VOTE#  \end{LARGE}\end{center}& \begin{center}\begin{LARGE} #VOTE_WEIGHT# \end{LARGE}\end{center} & \begin{large}#BILL_TITLE# - #BILL_DESCRIPTION# \end{large} \\ \hline
+\vspace{0pt} \begin{center}\begin{footnotesize}Member's Vote\end{footnotesize}\end{center} & \begin{center}\begin{footnotesize}Correct Vote\end{footnotesize}\end{center} &\vspace{0pt} \begin{footnotesize}\begin{center}\raisebox{2.2pt}{Weight}\end{center}\end{footnotesize} &\begin{footnotesize}\begin{center}\raisebox{2.2pt}{Bill Information}\end{center}\end{footnotesize} \\ \hline
+\cellcolor{#BILL_VOTE_COLOR#} \begin{center}\begin{footnotesize} #MEMBER_VOTE# \end{footnotesize}\end{center}& \begin{center}\begin{footnotesize} #GOOD_VOTE#  \end{footnotesize}\end{center}& \begin{center}\begin{footnotesize} #VOTE_WEIGHT# \end{footnotesize}\end{center} & \begin{footnotesize}#BILL_TITLE# - #BILL_DESCRIPTION# \end{footnotesize} \\ \hline
 \end{longtable}
 
 \end{document}
