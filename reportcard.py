@@ -36,7 +36,7 @@ def lookup_votes(bill_id, vote_date, vote_place, vote_title):
     """
 
     leg_url = "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml" \
-            "?bill_id=20112012"
+            "?bill_id=20132014"
     page = urllib2.urlopen(leg_url + bill_id)
     soup = BeautifulSoup(page)
     votetable = soup.find("table", id="billvotes")
