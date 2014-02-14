@@ -11,6 +11,16 @@ import argparse
 BUDGET_WEIGHT = 0.0
 LEG_WEIGHT = 1.0
 
+def get_session_span(year):
+    """ Returns the two year span (as a string) of the legislature session for specified year """
+    if year >= 1999:
+        raise RuntimeError('Invalid year. Cannot lookup vote infor prior to 1999.')
+    # Sessions span odd-even
+    if year % 2 == 0:
+        return "%d%d"%(year-1,year)
+    else:
+        return "%d%d"%(year,year+1)
+
 def lookup_votes(bill_id, vote_date, vote_place, vote_title, year):
     """Returns a list of three lists [ [aye voters], [no voters], [nvr voters]]
 
@@ -37,17 +47,8 @@ def lookup_votes(bill_id, vote_date, vote_place, vote_title, year):
     returns [[],[],[]].
     """
 
-    def getSessionSpan(year):
-        """ Returns the two year span as a string of the legislature session for specified year """
-        assert year >= 1999, 'Invalid year. Cannot lookup vote infor prior to 1999.'
-        # Sessions span odd-even
-        if year % 2 == 0:
-            return '%d%d'%(year-1,year)
-        else:
-            return '%d%d'%(year,year+1)
-
     leg_url = "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml"
-    url_query = "?bill_id=" + getSessionSpan(year) + bill_id
+    url_query = "?bill_id=" + get_session_span(year) + bill_id
     page = urllib2.urlopen(leg_url + url_query)
     soup = BeautifulSoup(page)
     votetable = soup.find("table", id="billvotes")
