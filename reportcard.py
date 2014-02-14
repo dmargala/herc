@@ -179,18 +179,17 @@ def convert_to_ordinal(num):
 
     return num + "th"
 
-def write_tex(budget_dict, leg_dict, score_dict, year, template_name="handout"):
+def write_tex(budget_dict, leg_dict, score_dict, year, 
+member_info_filename, bill_desc_filename, template_name):
 
     # Make the directory for the tex file for each member
-    handout_dir = os.path.join("%d"%year,template_name)
+    handout_dir = os.path.join(str(year),template_name)
     if not os.path.isdir(handout_dir):
         os.mkdir(handout_dir)
 
     # Read in the members' information
     member_info = {}
-    member_info_filename = os.path.join("%d"%year,"memberinfo.csv")
-    for row in unicode_csv_reader(open(member_info_filename, "r"),
-            delimiter=",", codec='utf-8'):
+    for row in unicode_csv_reader(open(member_info_filename, "r"), delimiter=",", codec='utf-8'):
 
         if row[0] == "Member":
             continue
@@ -208,7 +207,6 @@ def write_tex(budget_dict, leg_dict, score_dict, year, template_name="handout"):
 
     ##And now get the bill information
     billinfo = {}
-    bill_desc_filename = os.path.join("%d"%year,"BillDescriptions.csv")
     for row in unicode_csv_reader(open(bill_desc_filename, "r"), delimiter=",", codec='utf-8'):
         if row[0] == "Bill Prefix":
             continue
@@ -334,7 +332,7 @@ def write_tex(budget_dict, leg_dict, score_dict, year, template_name="handout"):
         split_tex.remove(info_line)
 
         name_stripped = member.encode("ascii","ignore").replace(' ', '').replace('.', '')
-        save_filename = os.path.join("%d"%year,template_name,"%s.tex"%name_stripped)
+        save_filename = os.path.join(str(year),template_name,"%s.tex"%name_stripped)
         outfile = open(save_filename, "w")
         #print split_tex
         flag = False
@@ -375,8 +373,7 @@ def utf_8_encoder(unicode_csv_data, codec):
         dline = line.decode(codec)
         yield dline.encode('utf-8')
 
-def update_member_dict(member_dict, prefix, number, vdate, vplace, vtitle,
-        score, ayes, noes, nvrs):
+def update_member_dict(member_dict, prefix, number, vdate, vplace, vtitle, score, ayes, noes, nvrs):
     """Updates member dict with results for a particular vote.
 
     Arguments:
@@ -481,19 +478,30 @@ def main():
         help = "name of csv file containing budget votes")
     parser.add_argument("--leg-vote", type = str, default = "LegVotes.csv",
         help = "name of csv file containing non-budget votes")
+    parser.add_argument("--member-info", type = str, default = "memberinfo.csv",
+        help = "name of csv file containing member info")
+    parser.add_argument("--bill-desc", type = str, default = "BillDescriptions.csv",
+        help = "name of csv file containing bill descriptions")
+    parser.add_argument("--tex-template", type = str, default = "handout")
     parser.add_argument("--year", type = int, default = 2012,
         help = "year to create report card for")
     # Read arguements
     args = parser.parse_args()
 
-    budget_member_dict, budget_vote_items = member_vote_histories(os.path.join('%d'%args.year,args.budget_vote), args.year)
-    leg_member_dict, leg_vote_items = member_vote_histories(os.path.join('%d'%args.year,args.leg_vote), args.year)
+    budget_file_name = os.path.join(str(args.year),args.budget_vote)
+    budget_member_dict, budget_vote_items = member_vote_histories(budget_file_name, args.year)
+    
+    leg_file_name = os.path.join(str(args.year),args.leg_vote)
+    leg_member_dict, leg_vote_items = member_vote_histories(leg_file_name, args.year)
 
     member_scores = overall_member_scores(budget_member_dict, leg_member_dict)
 
-    #write_result(budget_member_dict, leg_member_dict, member_scores,
-    #        budget_vote_items + leg_vote_items)
-    write_tex(budget_member_dict, leg_member_dict, member_scores, args.year)
+    #write_result(budget_member_dict, leg_member_dict, member_scores, budget_vote_items + leg_vote_items)
+
+    member_info_filename = os.path.join(str(year),args.member_info)
+    bill_desc_filename = os.path.join(str(year),args.bill_desc)
+    write_tex(budget_member_dict, leg_member_dict, member_scores, args.year, 
+        member_info_filename, bill_desc_filename, args.tex_template)
 
 if __name__ == '__main__':
     main()
