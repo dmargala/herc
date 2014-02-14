@@ -10,12 +10,9 @@ import sys
 
 import argparse
 
-BUDGET_WEIGHT = 0.0
-LEG_WEIGHT = 1.0
-
 def get_session_span(year):
     """ Returns the two year span (as a string) of the legislature session for specified year """
-    if year >= 1999:
+    if year < 1999:
         raise RuntimeError('Invalid year. Cannot lookup vote infor prior to 1999.')
     # Sessions span odd-even
     if year % 2 == 0:
@@ -181,8 +178,7 @@ def convert_to_ordinal(num):
 
     return num + "th"
 
-def write_tex(budget_dict, leg_dict, score_dict, year, 
-member_info_filename, bill_desc_filename, template_name):
+def write_tex(budget_dict, leg_dict, score_dict, year, member_info_filename, bill_desc_filename, template_name):
 
     # Make the directory for the tex file for each member
     handout_dir = os.path.join(str(year),template_name)
@@ -441,7 +437,7 @@ def member_vote_histories(vote_csv, year):
 
     return member_dict, vote_items
 
-def overall_member_scores(budget_dict, leg_dict):
+def overall_member_scores(budget_dict, leg_dict, budget_weight, leg_weight):
 
     members = list(set(budget_dict.keys() + leg_dict.keys()))
 
@@ -456,9 +452,9 @@ def overall_member_scores(budget_dict, leg_dict):
         member_scores[member]['max_score'] = budget_max_score + leg_max_score
 
         if budget_max_score > 0 and leg_max_score > 0:
-            overall_score = (BUDGET_WEIGHT*budget_score/budget_max_score +
-                    LEG_WEIGHT*leg_score/leg_max_score)/\
-                            (BUDGET_WEIGHT + LEG_WEIGHT)
+            overall_score = (budget_weight*budget_score/budget_max_score +
+                    leg_weight*leg_score/leg_max_score)/\
+                            (budget_weight + leg_weight)
         elif budget_max_score > 0:
             overall_score = float(budget_score)/budget_max_score
         elif leg_max_score > 0:
@@ -487,6 +483,10 @@ def main():
     parser.add_argument("--tex-template", type = str, default = "handout")
     parser.add_argument("--year", type = int, default = 2012,
         help = "year to create report card for")
+    parser.add_argument("--budget-weight", type = float, default = 0.0,
+        help = "weight for budget portion of overall score")
+    parser.add_argument("--leg-weight", type = float, default = 1.0,
+        help = "weight for leg portion of overall score")
     # Read arguements
     args = parser.parse_args()
 
@@ -496,12 +496,12 @@ def main():
     leg_file_name = os.path.join(str(args.year),args.leg_vote)
     leg_member_dict, leg_vote_items = member_vote_histories(leg_file_name, args.year)
 
-    member_scores = overall_member_scores(budget_member_dict, leg_member_dict)
+    member_scores = overall_member_scores(budget_member_dict, leg_member_dict, args.budget_weight, args.leg_weight)
 
     #write_result(budget_member_dict, leg_member_dict, member_scores, budget_vote_items + leg_vote_items)
 
-    member_info_filename = os.path.join(str(year),args.member_info)
-    bill_desc_filename = os.path.join(str(year),args.bill_desc)
+    member_info_filename = os.path.join(str(args.year),args.member_info)
+    bill_desc_filename = os.path.join(str(args.year),args.bill_desc)
     write_tex(budget_member_dict, leg_member_dict, member_scores, args.year, 
         member_info_filename, bill_desc_filename, args.tex_template)
 
