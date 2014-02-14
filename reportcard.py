@@ -1,15 +1,26 @@
+#!/usr/bin/env python
+
 from bs4 import BeautifulSoup
 import csv
 import os
 import re
 import urllib2
 import sys
-import xlwt
+#import xlwt
 
-BUDGET_WEIGHT = 0.0
-LEG_WEIGHT = 1.0
+import argparse
 
-def lookup_votes(bill_id, vote_date, vote_place, vote_title):
+def get_session_span(year):
+    """ Returns the two year span (as a string) of the legislature session for specified year """
+    if year < 1999:
+        raise RuntimeError('Invalid year. Cannot lookup vote infor prior to 1999.')
+    # Sessions span odd-even
+    if year % 2 == 0:
+        return "%d%d"%(year-1,year)
+    else:
+        return "%d%d"%(year,year+1)
+
+def lookup_votes(bill_id, vote_date, vote_place, vote_title, year):
     """Returns a list of three lists [ [aye voters], [no voters], [nvr voters]]
 
     Arguments:
@@ -35,9 +46,9 @@ def lookup_votes(bill_id, vote_date, vote_place, vote_title):
     returns [[],[],[]].
     """
 
-    leg_url = "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml" \
-            "?bill_id=20132014"
-    page = urllib2.urlopen(leg_url + bill_id)
+    leg_url = "http://leginfo.legislature.ca.gov/faces/billVotesClient.xhtml"
+    url_query = "?bill_id=" + get_session_span(year) + bill_id
+    page = urllib2.urlopen(leg_url + url_query)
     soup = BeautifulSoup(page)
     votetable = soup.find("table", id="billvotes")
     rows = votetable.findAll("tr")[1:]
@@ -167,16 +178,16 @@ def convert_to_ordinal(num):
 
     return num + "th"
 
-def write_tex(budget_dict, leg_dict, score_dict):
+def write_tex(budget_dict, leg_dict, score_dict, year, member_info_filename, bill_desc_filename, template_name):
 
-    #Make the directory for the tex file for each member
-    if not os.path.isdir('handout/'):
-        os.mkdir('handout')
+    # Make the directory for the tex file for each member
+    handout_dir = os.path.join(str(year),template_name)
+    if not os.path.isdir(handout_dir):
+        os.mkdir(handout_dir)
 
-    ##Read in the members' information
+    # Read in the members' information
     member_info = {}
-    for row in unicode_csv_reader(open("./memberinfo.csv", "rU"),
-            delimiter=",", codec='utf-8'):
+    for row in unicode_csv_reader(open(member_info_filename, "r"), delimiter=",", codec='utf-8'):
 
         if row[0] == "Member":
             continue
@@ -194,8 +205,7 @@ def write_tex(budget_dict, leg_dict, score_dict):
 
     ##And now get the bill information
     billinfo = {}
-    for row in unicode_csv_reader(open("./BillDescriptions.csv", "rb"),
-            delimiter=",", codec='utf-8'):
+    for row in unicode_csv_reader(open(bill_desc_filename, "r"), delimiter=",", codec='utf-8'):
         if row[0] == "Bill Prefix":
             continue
 
@@ -204,15 +214,15 @@ def write_tex(budget_dict, leg_dict, score_dict):
         title = row[2]
         description = row[3]
         description = description.replace("$", "\$")
-        billinfo[ (prefix, number) ] = {"title":title,
-                "description":description}
+        billinfo[ (prefix, number) ] = {"title":title, "description":description}
 
     for member in score_dict:
-        raw_tex = file("./handout.tex").read()
+        raw_tex = file("%s.tex" % template_name).read()
 
-        raw_tex = raw_tex.replace("#PICTURE_FILE#", "../images/" + \
-                member_info[member]["body"] + "/" + \
-                member_info[member]["picturefile"])
+        raw_tex = raw_tex.replace("#YEAR#", str(year))
+
+        picture_filename = os.path.join("..","images",member_info[member]["body"],member_info[member]["picturefile"])
+        raw_tex = raw_tex.replace("#PICTURE_FILE#", picture_filename)
 
         #Get the percent score and the member's grade
         member_percent = score_dict[member]['overall_percent_score']
@@ -319,8 +329,9 @@ def write_tex(budget_dict, leg_dict, score_dict):
             split_tex.insert(info_index, newinfo)
         split_tex.remove(info_line)
 
-        f = open("./handout/" + member.encode("ascii",
-            "ignore").replace(' ', '').replace('.', '') + ".tex", "w")
+        name_stripped = member.encode("ascii","ignore").replace(' ', '').replace('.', '')
+        save_filename = os.path.join(str(year),template_name,"%s.tex"%name_stripped)
+        outfile = open(save_filename, "w")
         #print split_tex
         flag = False
         if not flag:
@@ -339,8 +350,8 @@ def write_tex(budget_dict, leg_dict, score_dict):
             row = [repr(k) for k in split_tex]
             print "Forcing row to output.."
             
-        f.write("\n".join(row))
-        f.close()
+        outfile.write("\n".join(row))
+        outfile.close()
 
 
 
@@ -360,8 +371,7 @@ def utf_8_encoder(unicode_csv_data, codec):
         dline = line.decode(codec)
         yield dline.encode('utf-8')
 
-def update_member_dict(member_dict, prefix, number, vdate, vplace, vtitle,
-        score, ayes, noes, nvrs):
+def update_member_dict(member_dict, prefix, number, vdate, vplace, vtitle, score, ayes, noes, nvrs):
     """Updates member dict with results for a particular vote.
 
     Arguments:
@@ -399,17 +409,17 @@ def update_member_dict(member_dict, prefix, number, vdate, vplace, vtitle,
         member_dict[member][ (prefix, number, vdate, vplace,
             vtitle, score) ] = 'NVR'
 
-def member_vote_histories(vote_csv):
+def member_vote_histories(vote_csv, year):
 
     member_dict = {}
     vote_items = []
 
-    for row in unicode_csv_reader(open(vote_csv, 'rb'), delimiter="\t",
-            quotechar = '"'):
+    for row in unicode_csv_reader(open(vote_csv, 'rb'), delimiter="\t", quotechar = '"'):
 
         if row[0] == 'Bill Prefix':
             continue ##Skip the column title line
 
+        print row
         prefix = row[0]
         number = row[1]
         billid = row[2]
@@ -418,7 +428,7 @@ def member_vote_histories(vote_csv):
         vtitle = re.sub("\s{2,}", " ", row[5].strip())
         score = int(row[6])
 
-        ayes, noes, nvrs = lookup_votes(billid, vdate, vplace, vtitle)
+        ayes, noes, nvrs = lookup_votes(billid, vdate, vplace, vtitle, year)
 
         update_member_dict(member_dict, prefix, number, vdate, vplace,
                 vtitle, score, ayes, noes, nvrs)
@@ -427,7 +437,7 @@ def member_vote_histories(vote_csv):
 
     return member_dict, vote_items
 
-def overall_member_scores(budget_dict, leg_dict):
+def overall_member_scores(budget_dict, leg_dict, budget_weight, leg_weight):
 
     members = list(set(budget_dict.keys() + leg_dict.keys()))
 
@@ -442,9 +452,9 @@ def overall_member_scores(budget_dict, leg_dict):
         member_scores[member]['max_score'] = budget_max_score + leg_max_score
 
         if budget_max_score > 0 and leg_max_score > 0:
-            overall_score = (BUDGET_WEIGHT*budget_score/budget_max_score +
-                    LEG_WEIGHT*leg_score/leg_max_score)/\
-                            (BUDGET_WEIGHT + LEG_WEIGHT)
+            overall_score = (budget_weight*budget_score/budget_max_score +
+                    leg_weight*leg_score/leg_max_score)/\
+                            (budget_weight + leg_weight)
         elif budget_max_score > 0:
             overall_score = float(budget_score)/budget_max_score
         elif leg_max_score > 0:
@@ -457,25 +467,43 @@ def overall_member_scores(budget_dict, leg_dict):
     return member_scores
 
 
-def main(budget_vote_csv, leg_vote_csv):
-    """Arguments:
-    budget_vote_csv -- name of csv file containing budget votes
-    leg_vote_csv -- name of csv file containing non-budget votes
-    """
-    budget_member_dict, budget_vote_items = \
-            member_vote_histories(budget_vote_csv)
+def main():
+    # parse command-line args
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser.add_argument("-v","--verbose", action = "store_true",
+        help = "provide more verbose output")
+    parser.add_argument("--budget-vote", type = str, default = "BudgetVotes.csv",
+        help = "name of csv file containing budget votes")
+    parser.add_argument("--leg-vote", type = str, default = "LegVotes.csv",
+        help = "name of csv file containing non-budget votes")
+    parser.add_argument("--member-info", type = str, default = "memberinfo.csv",
+        help = "name of csv file containing member info")
+    parser.add_argument("--bill-desc", type = str, default = "BillDescriptions.csv",
+        help = "name of csv file containing bill descriptions")
+    parser.add_argument("--tex-template", type = str, default = "handout")
+    parser.add_argument("--year", type = int, default = 2012,
+        help = "year to create report card for")
+    parser.add_argument("--budget-weight", type = float, default = 0.0,
+        help = "weight for budget portion of overall score")
+    parser.add_argument("--leg-weight", type = float, default = 1.0,
+        help = "weight for leg portion of overall score")
+    # Read arguements
+    args = parser.parse_args()
 
-    leg_member_dict, leg_vote_items = \
-            member_vote_histories(leg_vote_csv)
+    budget_file_name = os.path.join(str(args.year),args.budget_vote)
+    budget_member_dict, budget_vote_items = member_vote_histories(budget_file_name, args.year)
+    
+    leg_file_name = os.path.join(str(args.year),args.leg_vote)
+    leg_member_dict, leg_vote_items = member_vote_histories(leg_file_name, args.year)
 
-    member_scores = overall_member_scores(budget_member_dict, leg_member_dict)
+    member_scores = overall_member_scores(budget_member_dict, leg_member_dict, args.budget_weight, args.leg_weight)
 
-    write_result(budget_member_dict, leg_member_dict, member_scores,
-            budget_vote_items + leg_vote_items)
-    write_tex(budget_member_dict, leg_member_dict, member_scores)
+    #write_result(budget_member_dict, leg_member_dict, member_scores, budget_vote_items + leg_vote_items)
+
+    member_info_filename = os.path.join(str(args.year),args.member_info)
+    bill_desc_filename = os.path.join(str(args.year),args.bill_desc)
+    write_tex(budget_member_dict, leg_member_dict, member_scores, args.year, 
+        member_info_filename, bill_desc_filename, args.tex_template)
 
 if __name__ == '__main__':
-    if len(sys.argv) == 3:
-        main(sys.argv[1], sys.argv[2])
-    else:
-        print "Usage: python2 reportcard.py <budget_csv> <leg_csv>"
+    main()
