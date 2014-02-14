@@ -1,20 +1,19 @@
 "Bill Prefix"	"Bill Number"	"Bill ID"	"Vote Date"	"Vote Place"	"Motion"	"Score"
-"AB"	233	"0AB233Ó	"04/11/13"	"Assembly Floor"	"AB 233 WIECKOWSKI  Assembly Third Reading"	2
-"AB"	233	"0AB233Ó	"09/11/13"	"Senate Floor"	"Assembly 3rd Reading AB233 Wieckowski Reconsider"	2
-"AB"	330	"0AB330Ó	"01/29/14Ó	"Assembly Floor"	"AB 330 CHAU  Assembly Third Reading"	2
-"AB"	1162	"0AB1162Ó	"05/06/13Ó	"Assembly Floor"	"AB 1162 FRAZIER  Assembly Third Reading"	2
-"AB"	1241	"0AB1241Ó	"05/30/13Ó	"Assembly Floor"	"AB 1241 WEBER  Assembly Third Reading"	2
-"AB"	1285	"0AB1285Ó	"05/30/13Ó	"Assembly Floor"	"AB 1285 FONG  Assembly Third Reading"	2
-"AB"	1287	"0AB1287Ó	"09/10/13Ó	"Assembly Floor"	"AB 1287 QUIRK-SILVA  Concurrence in Senate Amendments"	2
-"AB"	1287	"0AB1287Ó	"09/09/13Ó	"Senate Floor"	"Assembly 3rd Reading AB1287 Quirk-Silva By Correa"	2
-"AB"	1364	"0AB1364Ó	"05/30/13Ó	"Assembly Floor"	"AB 1364 TING  Assembly Third Reading"	2
-ÒSBÓ	150	"0SB150Ó	"09/10/13Ó	"Assembly Floor"	"SB 150 Lara  Senate Third Reading  By GONZALEZ"	2
-ÒSBÓ	150	"0SB150Ó	"09/11/13Ó	"Senate Floor"	"Unfinished Business SB150 Lara Concurrence"	2
-ÒSB"	267	"0SB267Ó	"05/30/13Ó	"Senate Floor"	"W/O REF. TO FILE SB267 Pavley"	2
-ÒSB"	285	Ò0SB285Ó	"09/09/13Ó	"Assembly Floor"	"SB 285 De Leon  Senate Third Reading  By WILLIAMS"	2
-ÒSB"	285	"0SB285Ó	"05/28/13Ó	"Senate Floor"	"Senate 3rd Reading SB285 De Le—n"	2
-ÒSB"	520	"0SB520Ó	"05/30/13Ó	"Senate Floor"	"Senate 3rd Reading SB520 Steinberg"	2
-ÒSB"	595	Ò0SB595Ó	"08/22/13Ó	"Assembly Floor"	"SB 595 Calderon  Consent Calendar Second Day  Regular Session"	2
-ÒSB"	595	"0SB595Ó	"05/28/13Ó	"Senate Floor"	"Special Consent #6 SB595 Calderon"	2
-ÒSCAÓ	241	"0SCA241Ó	"01/30/14Ó	"Senate Floor"	"Senate 3rd Reading SCA5 Hernandez"	2
-
+"AB"	233	"0AB233"	"04/11/13"	"Assembly Floor"	"AB 233 WIECKOWSKI  Assembly Third Reading"	2
+"AB"	233	"0AB233"	"09/11/13"	"Senate Floor"	"Assembly 3rd Reading AB233 Wieckowski Reconsider"	2
+"AB"	330	"0AB330"	"01/29/14"	"Assembly Floor"	"AB 330 CHAU  Assembly Third Reading"	2
+"AB"	1162	"0AB1162"	"05/06/13"	"Assembly Floor"	"AB 1162 FRAZIER  Assembly Third Reading"	2
+"AB"	1241	"0AB1241"	"05/30/13"	"Assembly Floor"	"AB 1241 WEBER  Assembly Third Reading"	2
+"AB"	1285	"0AB1285"	"05/30/13"	"Assembly Floor"	"AB 1285 FONG  Assembly Third Reading"	2
+"AB"	1287	"0AB1287"	"09/10/13"	"Assembly Floor"	"AB 1287 QUIRK-SILVA  Concurrence in Senate Amendments"	2
+"AB"	1287	"0AB1287"	"09/09/13"	"Senate Floor"	"Assembly 3rd Reading AB1287 Quirk-Silva By Correa"	2
+"AB"	1364	"0AB1364"	"05/30/13"	"Assembly Floor"	"AB 1364 TING  Assembly Third Reading"	2
+"SB"	150	"0SB150"	"09/10/13"	"Assembly Floor"	"SB 150 Lara  Senate Third Reading  By GONZALEZ"	2
+"SB"	150	"0SB150"	"09/11/13"	"Senate Floor"	"Unfinished Business SB150 Lara Concurrence"	2
+"SB"	267	"0SB267"	"05/30/13"	"Senate Floor"	"W/O REF. TO FILE SB267 Pavley"	2
+"SB"	285	"0SB285"	"09/09/13"	"Assembly Floor"	"SB 285 De Leon  Senate Third Reading  By WILLIAMS"	2
+"SB"	285	"0SB285"	"05/28/13"	"Senate Floor"	"Senate 3rd Reading SB285 De Leâ€”n"	2
+"SB"	520	"0SB520"	"05/30/13"	"Senate Floor"	"Senate 3rd Reading SB520 Steinberg"	2
+"SB"	595	"0SB595"	"08/22/13"	"Assembly Floor"	"SB 595 Calderon  Consent Calendar Second Day  Regular Session"	2
+"SB"	595	"0SB595"	"05/28/13"	"Senate Floor"	"Special Consent #6 SB595 Calderon"	2
+"SCA"	241	"0SCA241"	"01/30/14"	"Senate Floor"	"Senate 3rd Reading SCA5 Hernandez"	2
