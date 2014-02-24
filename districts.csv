@@ -1,0 +1,543 @@
+city:number:pop:pct
+Redding:1:89,861:100
+Susanville:1:17,947:100
+Truckee:1:16,180:100
+Grass Valley:1:12,860:100
+Shasta Lake:1:10,164:100
+Anderson:1:9,932:100
+Yreka:1:7,765:100
+Mount Shasta:1:3,394:100
+Nevada City:1:3,068:100
+Weed:1:2,967:100
+Alturas:1:2,827:100
+Portola:1:2,104:100
+Colfax:1:1,963:100
+Dunsmuir:1:1,650:100
+Montague:1:1,443:100
+Tulelake:1:1,010:100
+Dorris:1:939:100
+Fort Jones:1:839:100
+Loyalton:1:769:100
+Etna:1:737:100
+Auburn:1:0:0.0
+Santa Rosa:2:93,592:55.8
+Eureka:2:27,191:100
+Windsor:2:26,801:100
+Arcata:2:17,231:100
+Ukiah:2:16,075:100
+Fortuna:2:11,926:100
+Healdsburg:2:11,254:100
+Cloverdale:2:8,618:100
+Crescent City:2:7,643:100
+Fort Bragg:2:7,273:100
+Willits:2:4,888:100
+Rio Dell:2:3,368:100
+Ferndale:2:1,371:100
+Blue Lake:2:1,253:100
+Point Arena:2:449:100
+Trinidad:2:367:100
+Chico:3:86,187:100
+Yuba City:3:64,925:100
+Paradise:3:26,218:100
+Oroville:3:15,546:100
+Red Bluff:3:14,076:100
+Marysville:3:12,072:100
+Live Oak:3:8,392:100
+Corning:3:7,663:100
+Orland:3:7,291:100
+Gridley:3:6,584:100
+Willows:3:6,166:100
+Colusa:3:5,971:100
+Wheatland:3:3,456:100
+Biggs:3:1,707:100
+Tehama:3:418:100
+Napa:4:76,915:100
+Davis:4:65,622:100
+Woodland:4:55,468:100
+Rohnert Park:4:40,971:100
+American Canyon:4:19,454:100
+Dixon:4:18,351:100
+Clearlake:4:15,250:100
+Winters:4:6,624:100
+St. Helena:4:5,814:100
+Calistoga:4:5,155:100
+Williams:4:5,123:100
+Lakeport:4:4,753:100
+Yountville:4:2,933:100
+Madera:5:61,416:100
+South Lake Tahoe:5:21,403:100
+Chowchilla:5:18,720:100
+Auburn:5:13,330:100
+Placerville:5:10,389:100
+Mammoth Lakes:5:8,234:100
+Ione:5:7,918:100
+Sonora:5:4,903:100
+Jackson:5:4,651:100
+Angels:5:3,836:100
+Sutter Creek:5:2,501:100
+Plymouth:5:1,005:100
+Amador City:5:185:100
+Roseville:6:118,788:100
+Folsom:6:72,203:100
+Rocklin:6:56,974:100
+Lincoln:6:42,819:100
+Loomis:6:6,430:100
+Sacramento:7:315,145:67.6
+West Sacramento:7:48,744:100
+Citrus Heights:8:83,301:100
+Rancho Cordova:8:64,776:100
+Elk Grove:9:153,015:100
+Sacramento:9:151,343:32.4
+Lodi:9:62,133:100.0
+Galt:9:23,647:100
+Santa Rosa:10:74,223:44.2
+Petaluma:10:57,941:100
+San Rafael:10:57,713:100
+Novato:10:51,904:100
+Mill Valley:10:13,903:100
+San Anselmo:10:12,336:100
+Larkspur:10:11,926:100
+Sonoma:10:10,648:100
+Corte Madera:10:9,253:100
+Tiburon:10:8,962:100
+Fairfax:10:7,441:100
+Sebastopol:10:7,379:100
+Cotati:10:7,265:100
+Sausalito:10:7,061:100
+Ross:10:2,415:100
+Belvedere:10:2,068:100
+Fairfield:11:105,321:100
+Antioch:11:102,372:100
+Vacaville:11:92,428:100
+Brentwood:11:51,481:100
+Oakley:11:35,432:100
+Suisun City:11:28,111:100
+Pittsburg:11:14,043:22.2
+Rio Vista:11:7,360:100
+Isleton:11:804:100
+Modesto:12:123,845:61.6
+Turlock:12:68,549:100
+Manteca:12:67,096:100
+Riverbank:12:22,678:100
+Oakdale:12:20,675:100
+Lathrop:12:18,023:100
+Ripon:12:14,297:100
+Waterford:12:8,456:100
+Escalon:12:7,132:100
+Hughson:12:6,640:100
+Stockton:13:291,707:100
+Tracy:13:82,922:100
+Lodi:13:1:0.0
+Concord:14:122,067:100
+Vallejo:14:115,942:100
+Pittsburg:14:49,221:77.8
+Martinez:14:35,824:100
+Pleasant Hill:14:33,152:100
+Benicia:14:26,997:100
+Walnut Creek:14:11,211:17.5
+Clayton:14:10,897:100
+Berkeley:15:112,580:100
+Richmond:15:103,701:100
+Oakland:15:79,895:20.4
+San Pablo:15:29,139:100
+Hercules:15:24,060:100
+El Cerrito:15:23,549:100
+Albany:15:18,539:100
+Pinole:15:18,390:100
+Piedmont:15:10,667:100
+Emeryville:15:10,080:100
+Livermore:16:80,968:100
+San Ramon:16:72,148:100
+Pleasanton:16:70,285:100
+Walnut Creek:16:52,962:82.5
+Dublin:16:46,036:100
+Danville:16:42,039:100
+Lafayette:16:23,893:100
+Orinda:16:17,643:100
+Moraga:16:16,016:100
+San Francisco:17:467,501:58.1
+Oakland:18:310,829:79.6
+San Leandro:18:84,950:100
+Alameda:18:73,812:100
+San Francisco:19:337,734:41.9
+Daly City:19:101,123:100
+South San Francisco:19:21,851:34.3
+Colma:19:1,792:100
+Hayward:20:144,186:100
+Fremont:20:109,397:51.1
+Union City:20:69,516:100
+Merced:21:78,958:100
+Modesto:21:77,320:38.4
+Ceres:21:45,417:100
+Los Banos:21:35,972:100
+Atwater:21:28,168:100
+Patterson:21:20,413:100
+Livingston:21:13,058:100
+Newman:21:10,224:100
+Gustine:21:5,520:100
+Dos Palos:21:4,950:100
+San Mateo:22:97,207:100
+Redwood City:22:76,815:100
+South San Francisco:22:41,781:65.7
+San Bruno:22:41,114:100
+Pacifica:22:37,234:100
+Foster City:22:30,567:100
+Burlingame:22:28,806:100
+San Carlos:22:28,406:100
+Belmont:22:25,835:100
+Millbrae:22:21,532:100
+Hillsborough:22:10,825:100
+Brisbane:22:4,282:100
+Fresno:23:291,632:59.0
+Clovis:23:95,631:100
+Sunnyvale:24:140,081:100
+Mountain View:24:74,066:100
+Palo Alto:24:64,403:100
+Menlo Park:24:32,026:100
+Los Altos:24:28,976:100
+East Palo Alto:24:28,155:100
+Half Moon Bay:24:11,324:100
+Los Altos Hills:24:7,922:100
+Atherton:24:6,914:100
+Woodside:24:5,287:100
+Cupertino:24:4,474:7.7
+Portola Valley:24:4,353:100
+San Jose:25:122,572:13.0
+Santa Clara:25:116,468:100
+Fremont:25:104,692:48.9
+Milpitas:25:66,790:100
+Newark:25:42,573:100
+Visalia:26:124,442:100
+Tulare:26:59,278:100
+Porterville:26:54,165:100
+Dinuba:26:21,453:100
+Lindsay:26:11,768:100
+Farmersville:26:10,588:100
+Exeter:26:10,334:100
+Woodlake:26:7,279:100
+Bishop:26:3,879:100
+San Jose:27:445,294:47.1
+San Jose:28:291,039:30.8
+Cupertino:28:53,828:92.3
+Campbell:28:39,349:100
+Saratoga:28:29,926:100
+Los Gatos:28:29,413:100
+Monte Sereno:28:3,341:100
+San Jose:29:87,037:9.2
+Santa Cruz:29:59,946:100
+Seaside:29:33,025:100
+Monterey:29:27,810:100
+Marina:29:19,718:100
+Pacific Grove:29:15,041:100
+Scotts Valley:29:11,580:100
+Capitola:29:9,918:100
+Carmel-by-the-Sea:29:3,722:100
+Del Rey Oaks:29:1,624:100
+Sand City:29:334:100
+Watsonville:29:0:0.0
+Salinas:30:150,441:100
+Watsonville:30:51,199:100
+Gilroy:30:48,821:100
+Morgan Hill:30:37,882:100
+Hollister:30:34,928:100
+Soledad:30:25,738:100
+Greenfield:30:16,330:100
+King City:30:12,874:100
+Gonzales:30:8,187:100
+San Juan Bautista:30:1,862:100
+Fresno:31:203,033:41.0
+Sanger:31:24,270:100
+Reedley:31:24,194:100
+Selma:31:23,219:100
+Parlier:31:14,494:100
+Kerman:31:13,544:100
+Coalinga:31:13,380:100
+Kingsburg:31:11,382:100
+Mendota:31:11,014:100
+Orange Cove:31:9,078:100
+Firebaugh:31:7,549:100
+Huron:31:6,754:100
+Fowler:31:5,570:100
+San Joaquin:31:4,001:100
+Bakersfield:32:76,190:21.9
+Hanford:32:53,967:100
+Delano:32:53,041:100
+Wasco:32:25,545:100
+Corcoran:32:24,813:100
+Lemoore:32:24,531:100
+Arvin:32:19,304:100
+Shafter:32:16,988:100
+Avenal:32:15,505:100
+McFarland:32:12,707:100
+Victorville:33:115,903:100
+Hesperia:33:90,173:100
+Apple Valley:33:69,135:100
+Adelanto:33:31,765:100
+Barstow:33:22,639:100
+Big Bear Lake:33:5,019:100
+Needles:33:4,844:100
+Bakersfield:34:271,293:78.1
+Ridgecrest:34:27,616:100
+Tehachapi:34:14,414:100
+Taft:34:9,327:100
+Maricopa:34:1,154:100
+Santa Maria:35:99,553:100
+San Luis Obispo:35:45,119:100
+Lompoc:35:42,434:100
+El Paso de Robles (Paso Robles):35:29,793:100
+Atascadero:35:28,310:100
+Arroyo Grande:35:17,252:100
+Grover Beach:35:13,156:100
+Morro Bay:35:10,234:100
+Pismo Beach:35:7,655:100
+Guadalupe:35:7,080:100
+Lancaster:36:156,633:100
+Palmdale:36:152,750:100
+California City:36:14,120:100
+San Buenaventura (Ventura):37:106,433:100
+Santa Barbara:37:88,410:100
+Oxnard:37:41,854:21.1
+Goleta:37:29,888:100
+Santa Paula:37:29,321:100
+Fillmore:37:15,002:100
+Carpinteria:37:13,040:100
+Ojai:37:7,461:100
+Solvang:37:5,245:100
+Buellton:37:4,828:100
+Santa Clarita:38:176,320:100
+Simi Valley:38:124,237:100
+Los Angeles:38:88,442:2.3
+Los Angeles:39:441,180:11.6
+San Fernando:39:23,645:100
+Rancho Cucamonga:40:145,014:87.7
+San Bernardino:40:142,735:68.0
+Redlands:40:68,747:100
+Highland:40:53,104:100
+Loma Linda:40:23,261:100
+Pasadena:41:137,122:100
+Upland:41:73,732:100
+Monrovia:41:36,331:99.3
+Claremont:41:34,926:100
+San Dimas:41:33,371:100
+La Verne:41:31,063:100
+South Pasadena:41:25,619:100
+Rancho Cucamonga:41:20,255:12.3
+Sierra Madre:41:10,917:100
+Yucaipa:42:51,367:100
+Hemet:42:48,493:61.7
+Palm Desert:42:48,445:100
+Palm Springs:42:44,552:100
+San Jacinto:42:44,199:100
+La Quinta:42:37,467:100
+Beaumont:42:36,877:100
+Banning:42:29,603:100
+Twentynine Palms:42:25,048:100
+Yucca Valley:42:20,700:100
+Rancho Mirage:42:17,218:100
+Calimesa:42:7,879:100
+Indian Wells:42:4,958:100
+Glendale:43:191,719:100
+Los Angeles:43:133,317:3.5
+Burbank:43:103,340:100
+La Cañada Flintridge:43:20,246:100
+Oxnard:44:156,045:78.9
+Thousand Oaks:44:126,683:100
+Camarillo:44:65,201:100
+Moorpark:44:34,421:100
+Port Hueneme:44:21,723:100
+Westlake Village:44:8,270:100
+Los Angeles:45:436,991:11.5
+Calabasas:45:23,058:100
+Hidden Hills:45:1,856:100
+Los Angeles:46:464,441:12.2
+Fontana:47:196,069:100
+Rialto:47:99,171:100
+San Bernardino:47:67,189:32.0
+Colton:47:52,154:100
+Grand Terrace:47:12,040:100
+West Covina:48:75,643:71.3
+Baldwin Park:48:75,390:100
+Glendora:48:50,073:100
+Covina:48:47,796:100
+Azusa:48:46,361:100
+El Monte:48:43,043:37.9
+Duarte:48:21,321:100
+Irwindale:48:1,422:100
+Bradbury:48:1,048:100
+Monrovia:48:259:0.7
+Industry:48:0:0.0
+Alhambra:49:83,089:100
+El Monte:49:70,432:62.1
+Monterey Park:49:60,269:100
+Arcadia:49:56,364:100
+Rosemead:49:53,764:100
+San Gabriel:49:39,718:100
+Temple City:49:35,558:100
+San Marino:49:13,147:100
+Montebello:49:6,456:10.3
+South El Monte:49:5,511:27.4
+Los Angeles:50:260,615:6.9
+Santa Monica:50:89,736:100
+West Hollywood:50:34,399:100
+Beverly Hills:50:34,109:100
+Agoura Hills:50:20,330:100
+Malibu:50:12,645:100
+Los Angeles:51:339,147:8.9
+Ontario:52:163,924:100
+Pomona:52:149,058:100
+Chino:52:77,983:100
+Montclair:52:36,664:100
+Los Angeles:53:412,592:10.9
+Huntington Park:53:51,212:88.1
+Vernon:53:112:100
+Los Angeles:54:409,001:10.8
+Culver City:54:38,883:100
+Inglewood:54:111,772:0.3
+Chino Hills:55:76,616:100
+Yorba Linda:55:62,942:100
+La Habra:55:56,044:100
+Diamond Bar:55:49,041:100
+Placentia:55:42,072:100
+Brea:55:39,880:100
+West Covina:55:16,522:28.7
+Walnut:55:286:100
+Industry:55:74,799:6.4
+Indio:56:64,234:100
+Cathedral City:56:60,239:100
+El Centro:56:55,544:100
+Coachella:56:50,533:100
+Calexico:56:39,282:100
+Desert Hot Springs:56:30,455:100
+Brawley:56:29,172:100
+Blythe:56:14:100
+Imperial:56:76,036:100
+Calipatria:56:51,200:100
+Holtville:56:42,598:100
+Westmorland:56:40,704:100
+Whittier:57:38,572:100
+Norwalk:57:25,938:62.2
+La Mirada:57:24,953:100
+La Puente:57:20,817:100
+Santa Fe Springs:57:14,758:100
+South El Monte:57:7,705:72.6
+La Habra Heights:57:5,939:100
+Industry:57:2,225:93.6
+Downey:58:85,331:100
+Bellflower:58:65,669:100
+Pico Rivera:58:48,527:100
+Montebello:58:39,816:89.7
+Cerritos:58:16,223:100
+Bell Gardens:58:14,605:100
+Norwalk:58:5,325:37.8
+Artesia:58:205:100
+Commerce:58:12,823:100
+Los Angeles:59:370,351:9.8
+Huntington Park:59:6,902:11.9
+Corona:60:152,374:100
+Riverside:60:122,665:40.4
+Norco:60:27,063:100
+Moreno Valley:61:193,365:100
+Riverside:61:181,206:59.6
+Perris:61:68,386:100
+Los Angeles:62:132,027:3.5
+Inglewood:62:109,387:99.7
+Hawthorne:62:84,293:100
+Lawndale:62:32,769:100
+El Segundo:62:16,654:100
+Gardena:62:15,200:25.8
+South Gate:63:94,396:100
+Lakewood:63:80,048:100
+Lynwood:63:69,772:100
+Long Beach:63:59,409:12.9
+Paramount:63:54,098:100
+Bell:63:35,477:100
+Maywood:63:27,395:100
+Cudahy:63:23,805:100
+Hawaiian Gardens:63:14,254:100
+Los Angeles:64:185,498:4.9
+Compton:64:96,455:100
+Carson:64:91,714:100
+Long Beach:64:32,180:7.0
+Fullerton:65:135,161:100
+Anaheim:65:130,888:38.9
+Buena Park:65:80,530:100
+Cypress:65:47,802:100
+Stanton:65:38,186:100
+La Palma:65:15,568:100
+Garden Grove:65:747:0.4
+Torrance:66:145,438:100
+Redondo Beach:66:66,748:100
+Gardena:66:43,629:74.2
+Rancho Palos Verdes:66:41,643:100
+Los Angeles:66:39,729:1.0
+Manhattan Beach:66:35,135:100
+Lomita:66:20,256:100
+Hermosa Beach:66:19,506:100
+Palos Verdes Estates:66:13,438:100
+Rolling Hills Estates:66:8,067:100
+Rolling Hills:66:1,860:100
+Murrieta:67:103,466:100
+Menifee:67:77,519:100
+Lake Elsinore:67:51,821:100
+Wildomar:67:32,176:100
+Hemet:67:30,164:38.3
+Canyon Lake:67:10,561:100
+Orange:68:126,318:92.6
+Lake Forest:68:77,264:100
+Tustin:68:75,540:100
+Anaheim:68:72,577:21.6
+Irvine:68:72,114:34.0
+Villa Park:68:5,812:100
+Santa Ana:69:284,820:87.8
+Anaheim:69:132,800:39.5
+Garden Grove:69:37,280:21.8
+Orange:69:10,098:7.4
+Long Beach:70:370,668:80.2
+Los Angeles:70:79,290:2.1
+Signal Hill:70:11,016:100
+Avalon:70:3,728:100
+El Cajon:71:99,478:100
+Santee:71:53,413:100
+Garden Grove:72:132,856:77.7
+Huntington Beach:72:96,126:50.6
+Westminster:72:89,701:100
+Fountain Valley:72:55,313:100
+Santa Ana:72:39,708:12.2
+Seal Beach:72:24,168:100
+Los Alamitos:72:11,449:100
+Mission Viejo:73:93,305:100
+San Clemente:73:63,522:100
+Laguna Niguel:73:62,979:100
+Rancho Santa Margarita:73:47,853:100
+Aliso Viejo:73:47,823:100
+San Juan Capistrano:73:34,593:100
+Dana Point:73:33,351:100
+Laguna Hills:73:30,344:100
+Irvine:74:140,261:66.0
+Costa Mesa:74:109,960:100
+Huntington Beach:74:93,866:49.4
+Newport Beach:74:85,186:100
+Laguna Beach:74:22,723:100
+Laguna Woods:74:16,192:100
+Escondido:75:143,911:100
+Temecula:75:100,097:100
+San Marcos:75:83,781:100
+Oceanside:76:167,086:100
+Carlsbad:76:105,328:100
+Vista:76:93,834:100
+Encinitas:76:59,518:100
+San Diego:77:387,720:29.7
+Poway:77:47,811:100
+San Diego:78:399,621:30.6
+Imperial Beach:78:26,324:100
+Coronado:78:18,912:100
+Solana Beach:78:12,867:100
+Del Mar:78:4,161:100
+San Diego:79:260,243:19.9
+Chula Vista:79:88,793:36.4
+La Mesa:79:57,065:100
+Lemon Grove:79:25,320:100
+National City:79:15,856:27.1
+San Diego:80:259,818:19.9
+Chula Vista:80:155,123:63.6
+National City:80:42,726:72.9
