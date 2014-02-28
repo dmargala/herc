@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 
-from bs4 import BeautifulSoup
-import csv
-import os
+import bs4
+import os.path
 import re
 import urllib2
 import sys
 import datetime
 import subprocess
 
-#import xlwt
 import herc
 
 def get_session_span(year):
@@ -98,68 +96,14 @@ def lookup_votes(bill):
 
     url_query = build_url_query(bill)
     page = urllib2.urlopen(url_query)
-    soup = BeautifulSoup(page)
+    soup = bs4.BeautifulSoup(page)
     votetable = soup.find("table", id="billvotes")
     [ayes, noes, nvrs] = parse_table(bill, votetable)
     return [ayes, noes, nvrs]
 
-def unicode_csv_reader(unicode_csv_data, dialect=csv.excel,
-        codec="iso-8859-1", **kwargs):
-    """Outputs utf-8 encoded strings from CSV"""
-    # csv.py doesn't do Unicode; encode temporarily as UTF-8:
-    csv_reader = csv.reader(utf_8_encoder(unicode_csv_data, codec),
-                            dialect=dialect, **kwargs)
-    for row in csv_reader:
-        # decode UTF-8 back to Unicode, cell by cell:
-        yield [unicode(cell.strip(), 'utf-8') for cell in row]
-
-def utf_8_encoder(unicode_csv_data, codec):
-    """A little generator for encoding data from the CSV files"""
-    for line in unicode_csv_data:
-        dline = line.decode(codec)
-        yield dline.encode('utf-8')
-
-def update_member_dict(member_dict, prefix, number, vdate, vplace, vtitle, score, ayes, noes, nvrs):
-    """Updates member dict with results for a particular vote.
-
-    Arguments:
-    member_dict -- dictionary keyed by member names. Contains record of vote
-                   cast for particular votes as well as score and max_score
-    prefix, number, vdate, vtitle -- identifier for the vote
-    score -- weight for vote. Positive value means we want an aye, negative
-             means we want a nay
-    ayes, noes, nvrs -- lists of member names who cast each type of vote
-    """
-
-    #If there's a member name that doesn't currently appear in member_dict
-    #initialize with zero score and max_score
-    for member in ayes+noes+nvrs:
-        if member not in member_dict:
-            member_dict[member] = {'score':0, 'max_score':0}
-
-    for member in ayes:
-        member_dict[member][ (prefix, number, vdate, vplace,
-            vtitle, score) ] = 'Y'
-        if score > 0: #They voted ayes on positive score
-            member_dict[member]['score'] += score
-            member_dict[member]['max_score'] += score
-        else:
-            member_dict[member]['max_score'] += abs(score)
-    for member in noes:
-        member_dict[member][ (prefix, number, vdate, vplace,
-            vtitle, score) ] = 'N'
-        if score > 0:
-            member_dict[member]['max_score'] += score
-        else:  #Voted no on negative score
-            member_dict[member]['score'] += abs(score)
-            member_dict[member]['max_score'] += abs(score)
-    for member in nvrs: #For NVRs, don't change the score, just record the NVR
-        member_dict[member][ (prefix, number, vdate, vplace,
-            vtitle, score) ] = 'NVR'
-
 def vote_histories(vote_csv):
     vote_items = []
-    for row in unicode_csv_reader(open(vote_csv, 'rb'), delimiter="\t", quotechar = '"'):
+    for row in herc.util.unicode_csv_reader(open(vote_csv, 'rb'), delimiter="\t", quotechar = '"'):
         if row[0] == 'Bill Prefix':
             continue ##Skip the column title line
         print row
@@ -170,7 +114,7 @@ def vote_histories(vote_csv):
         bill['vdate'] = row[3]
         bill['vplace'] = re.sub("\s{2,}", " ", row[4].strip())
         bill['vtitle'] = re.sub("\s{2,}", " ", row[5].strip())
-        bill['weight'] = int(row[6])
+        bill['score'] = int(row[6])
         try:
             ayes, noes, nvrs = lookup_votes(bill)
         except RuntimeError,e:

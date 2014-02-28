@@ -1,5 +1,5 @@
 {
-  "git": "cf3881daeeb9f5e3bc4e06d7021e5b05f7923a50",
+  "git": "5a1e3f0739fc0ba2b695b57d0393bffeaadcdafd",
   "args": {
     "input": "LegVotes.csv",
     "output": "legvotes",
@@ -20,7 +20,7 @@
     "Darwin Kernel Version 12.5.0: Sun Sep 29 13:33:47 PDT 2013; root:xnu-2050.48.12~1/RELEASE_X86_64",
     "x86_64"
   ],
-  "time": "Thu Feb 27 22:32:03 2014",
+  "time": "Thu Feb 27 23:33:09 2014",
   "bills": [
     {
       "nvrs": [
@@ -31,11 +31,11 @@
         "Patterson",
         "Salas"
       ],
-      "weight": 2,
       "vdate": "04/11/13",
       "vplace": "Assembly Floor",
       "number": "233",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Ammiano",
         "Atkins",
@@ -125,11 +125,11 @@
         "Wolk",
         "Yee"
       ],
-      "weight": 2,
       "vdate": "09/11/13",
       "vplace": "Senate Floor",
       "number": "233",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Corbett",
         "De Le\u00f3n",
@@ -176,11 +176,11 @@
         "Perea",
         "Weber"
       ],
-      "weight": 2,
       "vdate": "01/29/14",
       "vplace": "Assembly Floor",
       "number": "330",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Alejo",
         "Ammiano",
@@ -276,11 +276,11 @@
         "Morrell",
         "Stone"
       ],
-      "weight": 2,
       "vdate": "05/16/13",
       "vplace": "Assembly Floor",
       "number": "1162",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Alejo",
         "Ammiano",
@@ -366,11 +366,11 @@
         "Melendez",
         "Waldron"
       ],
-      "weight": 2,
       "vdate": "05/30/13",
       "vplace": "Assembly Floor",
       "number": "1241",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Achadjian",
         "Alejo",
@@ -459,11 +459,11 @@
         "Holden",
         "Logue"
       ],
-      "weight": 2,
       "vdate": "05/30/13",
       "vplace": "Assembly Floor",
       "number": "1285",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Alejo",
         "Ammiano",
@@ -551,11 +551,11 @@
       "nvrs": [
         "Donnelly"
       ],
-      "weight": 2,
       "vdate": "09/10/13",
       "vplace": "Assembly Floor",
       "number": "1287",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Achadjian",
         "Alejo",
@@ -641,11 +641,11 @@
     },
     {
       "nvrs": [],
-      "weight": 2,
       "vdate": "09/09/13",
       "vplace": "Senate Floor",
       "number": "1287",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Anderson",
         "Beall",
@@ -699,11 +699,11 @@
         "Patterson",
         "Wilk"
       ],
-      "weight": 2,
       "vdate": "05/30/13",
       "vplace": "Assembly Floor",
       "number": "1364",
       "prefix": "AB",
+      "score": 2,
       "ayes": [
         "Alejo",
         "Ammiano",
@@ -795,11 +795,11 @@
         "Olsen",
         "Wilk"
       ],
-      "weight": 2,
       "vdate": "09/10/13",
       "vplace": "Assembly Floor",
       "number": "150",
       "prefix": "SB",
+      "score": 2,
       "ayes": [
         "Alejo",
         "Ammiano",
@@ -884,11 +884,11 @@
         "De Le\u00f3n",
         "Hancock"
       ],
-      "weight": 2,
       "vdate": "09/11/13",
       "vplace": "Senate Floor",
       "number": "150",
       "prefix": "SB",
+      "score": 2,
       "ayes": [
         "Beall",
         "Berryhill",
@@ -934,11 +934,11 @@
     },
     {
       "nvrs": [],
-      "weight": 2,
       "vdate": "05/30/13",
       "vplace": "Senate Floor",
       "number": "267",
       "prefix": "SB",
+      "score": 2,
       "ayes": [
         "Beall",
         "Block",
@@ -999,11 +999,11 @@
         "Wright",
         "Yee"
       ],
-      "weight": 2,
       "vdate": "05/30/13",
       "vplace": "Senate Floor",
       "number": "520",
       "prefix": "SB",
+      "score": 2,
       "ayes": [
         "Anderson",
         "Beall",
@@ -1040,11 +1040,11 @@
     },
     {
       "nvrs": [],
-      "weight": 2,
       "vdate": "08/22/13",
       "vplace": "Assembly Floor",
       "number": "595",
       "prefix": "SB",
+      "score": 2,
       "ayes": [
         "Achadjian",
         "Alejo",
@@ -1131,11 +1131,11 @@
     },
     {
       "nvrs": [],
-      "weight": 2,
       "vdate": "05/28/13",
       "vplace": "Senate Floor",
       "number": "595",
       "prefix": "SB",
+      "score": 2,
       "ayes": [
         "Anderson",
         "Beall",
