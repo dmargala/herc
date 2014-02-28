@@ -237,6 +237,7 @@ def main():
         help = "name of tex file to use as reportcard template")
     parser.add_argument("--year", type = int, default = 2012,
         help = "year to create report card for")
+    parser.add_argument("--clobber", action = "store_true")
     # Read arguements
     args = parser.parse_args()
     
@@ -274,14 +275,22 @@ def main():
     if args.verbose:
         print 'Read %d bill descriptions.' % len(bill_desc)
 
-    # Write tex file output
-    # Make the directory for the tex file for each member
+    # Create output directory
     outdir = os.path.join(str(args.year),args.tex_template)
     if not os.path.isdir(outdir):
         os.mkdir(outdir)
+
+    # Save a log file in output reportcard directory
+    results = herc.results.Results(args)
+    results.save(os.path.join(outdir,'reportcard'), overwriteOk=args.clobber)
+
+    # Write tex file output
     write_tex(args.tex_template, outdir, members, member_info, bill_desc, args.year)
     if args.verbose:
         print 'Finished writing tex files to: %s' % os.path.abspath(outdir)
+        print 'To make pdf\'s from tex files:'
+        print '\tcd %s' % os.path.abspath(outdir)
+        print '\tfor fn in $(ls -1 *.tex); do /usr/texbin/pdflatex -interaction=nonstopmode $fn; done'
 
 if __name__ == '__main__':
     main()
