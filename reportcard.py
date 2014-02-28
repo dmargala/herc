@@ -1,11 +1,8 @@
 #!/usr/bin/env python
-
-import csv
 import os
 import re
 import sys
 import argparse
-
 
 import herc
 
@@ -47,24 +44,23 @@ def load_bill_desc(bill_desc_filename):
         bill_desc[ (prefix, number) ] = {"title":title, "description":description}
     return bill_desc
 
-def load_tex_template(tex_template):
-    # Make the directory for the tex file for each member
-    if not os.path.isdir(tex_template):
-        os.mkdir(tex_template)
-    return file("%s.tex" % tex_template).read()
-
-def write_tex(tex_template, members, member_info, bill_desc, year):
+def write_tex(tex_template, outdir, members, member_info, bill_desc, year):
     for member in members:
-        raw_tex = load_tex_template(tex_template)
+        raw_tex = file("%s.tex" % tex_template).read()
 
         raw_tex = raw_tex.replace("#YEAR#", str(year))
 
-        picture_filename = os.path.join("..","images",member_info[member]["body"],member_info[member]["picturefile"])
-        raw_tex = raw_tex.replace("#PICTURE_FILE#", picture_filename)
+        if member in member_info:
+            current_member_info = member_info[member]
+        else:
+            current_member_info = {'member':member, 'body':'<missing>', 'district':"0", 'picturefile':'missing.jpg', 'fullname':member, 'party':'<missing>', 'cities':'<missing>'}
+
+        picture_filename = os.path.join("..","images",current_member_info['body'],current_member_info["picturefile"])
+        raw_tex = raw_tex.replace("#PICTURE_FILE#",picture_filename)
 
         #Get the percent score and the member's grade
         member_percent = members[member]['overall_percent_score']
-        roundmember = "%.1f" % round(member_percent*100, 3)
+        roundedscore = "%.1f" % round(member_percent*100, 3)
         if member_percent > .965:
             grade = "A+"
             color = "Green"
@@ -107,21 +103,16 @@ def write_tex(tex_template, members, member_info, bill_desc, year):
         else:
             grade = ""
             color = "gray"
-        raw_tex = raw_tex.replace("#NUMBERSCORE#", roundmember)    
+        raw_tex = raw_tex.replace("#NUMBERSCORE#", roundedscore)    
         raw_tex = raw_tex.replace("#GRADE#", grade)
         raw_tex = raw_tex.replace("#GRADE_COLOR#", color)
-        raw_tex = raw_tex.replace("#MEMBER_NAME#",
-                member_info[member]["fullname"])
-        raw_tex = raw_tex.replace("#ORDINAL_DISTRICT#",
-                convert_to_ordinal(member_info[member]["district"]))
-        raw_tex = raw_tex.replace("#HOUSE#",
-                member_info[member]["body"].title())
-        raw_tex = raw_tex.replace("#PARTY#",
-                member_info[member]["party"])
-        raw_tex = raw_tex.replace("#CITIES#",
-                member_info[member]["cities"])
+        raw_tex = raw_tex.replace("#MEMBER_NAME#", current_member_info["fullname"])
+        raw_tex = raw_tex.replace("#ORDINAL_DISTRICT#", convert_to_ordinal(current_member_info["district"]))
+        raw_tex = raw_tex.replace("#HOUSE#", current_member_info["body"].title())
+        raw_tex = raw_tex.replace("#PARTY#", current_member_info["party"])
+        raw_tex = raw_tex.replace("#CITIES#", current_member_info["cities"])
 
-        ##And that's all the member's information, so move on to bills
+        # And that's all the member's information, so move on to bills
 
         split_tex = raw_tex.split("\n")
         info_line = [k for k in split_tex if "#BILL_VOTE_COLOR#" in k][0]
@@ -135,12 +126,11 @@ def write_tex(tex_template, members, member_info, bill_desc, year):
                 continue
             if bills_dict[bill] == "NVR":
                 continue
-
             bill_title = str(bill[0]) + ' ' + str(bill[1])
             try:
                 bill_description = bill_desc[ (bill[0], bill[1]) ]["description"]
             except KeyError:
-#                print "Looking for", (bill[0], bill[1]), "in",
+                # print "Looking for", (bill[0], bill[1]), "in",
                 if bill[5] > 0:
                     bill_description = "A very good bill."
                 else:
@@ -165,7 +155,7 @@ def write_tex(tex_template, members, member_info, bill_desc, year):
         split_tex.remove(info_line)
 
         name_stripped = member.encode("ascii","ignore").replace(' ', '').replace('.', '')
-        save_filename = os.path.join(tex_template,"%s.tex"%name_stripped)
+        save_filename = os.path.join(outdir,"%s.tex"%name_stripped)
         outfile = open(save_filename, "w")
         #print split_tex
         flag = False
@@ -195,7 +185,7 @@ def update_members(members, prefix, number, id, vdate, vplace, vtitle, score, ay
     Arguments:
     members -- dictionary keyed by member names. Contains record of vote
                    cast for particular votes as well as score and max_score
-    prefix, number, vdate, vtitle -- identifier for the vote
+    prefix, number, id, vdate, vtitle -- identifier for the vote
     score -- weight for vote. Positive value means we want an aye, negative
              means we want a nay
     ayes, noes, nvrs -- lists of member names who cast each type of vote
@@ -223,8 +213,14 @@ def update_members(members, prefix, number, id, vdate, vplace, vtitle, score, ay
         members[member][ (prefix, number, vdate, vplace, vtitle, score) ] = 'NVR'
 
 def finalize_scores(members):
+    """
+    Updates member dict with final scores (calculates 'overall_percent_score')
+
+    Arguments:
+    members -- dictionary keyed by member names. 
+    """
     for member,votes in members.iteritems():
-        members[member]['overall_percent_score'] = votes['score']/votes['max_score']
+        members[member]['overall_percent_score'] = float(votes['score'])/votes['max_score']
 
 def main():
     # parse command-line args
@@ -232,34 +228,60 @@ def main():
     parser.add_argument("-v","--verbose", action = "store_true",
         help = "provide more verbose output")
     parser.add_argument("--leg-vote", type = str, default = "legvotes",
-        help = "name of csv file containing non-budget votes")
+        help = "name of csv file containing bill vote records")
     parser.add_argument("--member-info", type = str, default = "memberinfo.csv",
         help = "name of csv file containing member info")
     parser.add_argument("--bill-desc", type = str, default = "BillDescriptions.csv",
         help = "name of csv file containing bill descriptions")
-    parser.add_argument("--tex-template", type = str, default = "handout")
+    parser.add_argument("--tex-template", type = str, default = "handout",
+        help = "name of tex file to use as reportcard template")
     parser.add_argument("--year", type = int, default = 2012,
         help = "year to create report card for")
     # Read arguements
     args = parser.parse_args()
     
-    # Open leg votes
-    leg_votes = herc.results.load(os.path.join(str(args.year),args.leg_vote))
+    # Load leg votes from file
+    leg_votes_filename = os.path.join(str(args.year),args.leg_vote)
+    if args.verbose:
+        print 'Reading bill vote records from file: %s' % os.path.abspath(leg_votes_filename)+'.json'
+    leg_votes = herc.results.load(leg_votes_filename)
     leg_vote_items = leg_votes['bills']
+    if args.verbose:
+        print 'Read %d bill vote records.' % len(leg_vote_items)
 
+    # Create member voting record from leg votes entries
     members = {}
     for bill in leg_vote_items:
         update_members(members, **bill)
-
+    if args.verbose:
+        print 'There are %d members listed in the bill vote records.' % len(members)
+    # Finalize member vote scores
     finalize_scores(members)
 
+    # Load member info
     member_info_filename = os.path.join(str(args.year),args.member_info)
+    if args.verbose:
+        print 'Reading member info from file: %s' % os.path.abspath(member_info_filename)
     member_info = load_member_info(member_info_filename)
+    if args.verbose:
+        print 'Found member info for %d members.' % len(member_info)
 
+    # Load bill descriptions
     bill_desc_filename = os.path.join(str(args.year),args.bill_desc)
+    if args.verbose:
+        print 'Reading bill description from file: %s' % os.path.abspath(bill_desc_filename)
     bill_desc = load_bill_desc(bill_desc_filename)
+    if args.verbose:
+        print 'Read %d bill descriptions.' % len(bill_desc)
 
-    write_tex(os.path.join(str(args.year),args.tex_template), members, member_info, bill_desc, args.year)
+    # Write tex file output
+    # Make the directory for the tex file for each member
+    outdir = os.path.join(str(args.year),args.tex_template)
+    if not os.path.isdir(outdir):
+        os.mkdir(outdir)
+    write_tex(args.tex_template, outdir, members, member_info, bill_desc, args.year)
+    if args.verbose:
+        print 'Finished writing tex files to: %s' % os.path.abspath(outdir)
 
 if __name__ == '__main__':
     main()
