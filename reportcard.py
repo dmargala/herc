@@ -120,21 +120,16 @@ def write_tex(tex_template, outdir, members, member_info, bill_desc, year):
 
         bills_dict = dict(members.get(member, {}))
 
-        for bill in sorted([k for k in bills_dict if isinstance(k, tuple)],
-            key=lambda x:x[5], reverse=True):
+        for bill in sorted([k for k in bills_dict if isinstance(k, tuple)], key=lambda x:x[5], reverse=True):
             if not isinstance(bill, tuple):
-                continue
-            if bills_dict[bill] == "NVR":
-                continue
+                raise RuntimeError('bill is not instance? : %s ' % bill)
+            # if bills_dict[bill] == "NVR":
+            #     continue
             bill_title = str(bill[0]) + ' ' + str(bill[1])
             try:
                 bill_description = bill_desc[ (bill[0], bill[1]) ]["description"]
             except KeyError:
-                # print "Looking for", (bill[0], bill[1]), "in",
-                if bill[5] > 0:
-                    bill_description = "A very good bill."
-                else:
-                    bill_description = "A very bad bill."
+                raise RuntimeError('No bill info for %s %s' % (bill[0], bill[1]))
 
             newinfo = str(info_line)
             newinfo = newinfo.replace("#BILL_TITLE#", bill_title)
@@ -146,10 +141,12 @@ def write_tex(tex_template, outdir, members, member_info, bill_desc, year):
             newinfo = newinfo.replace("#GOOD_VOTE#", right_vote)
             newinfo = newinfo.replace("#MEMBER_VOTE#", bills_dict[bill])
             newinfo = newinfo.replace("#VOTE_WEIGHT#", str(abs(int(bill[5]))))
-            if bills_dict[bill] != right_vote:
+            if bills_dict[bill] == 'Y':
+                newinfo = newinfo.replace("#BILL_VOTE_COLOR#", "green")
+            elif bills_dict[bill] == 'N':
                 newinfo = newinfo.replace("#BILL_VOTE_COLOR#", "red")
             else:
-                newinfo = newinfo.replace("#BILL_VOTE_COLOR#", "green")
+                newinfo = newinfo.replace("#BILL_VOTE_COLOR#", "gray")
 
             split_tex.insert(info_index, newinfo)
         split_tex.remove(info_line)
